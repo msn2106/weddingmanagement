@@ -1,0 +1,18 @@
+`CODEOWNERS`
+
+```text
+# Set default code owners for directories
+# Format: <pattern> <team-or-username>
+
+
+# Backend
+/apps/backend/ @msn2106
+
+
+# Frontend
+/apps/frontend/ @msn2106
+
+
+# Shared packages
+/packages/shared/ @msn2106
+```
