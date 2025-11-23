@@ -1,30 +1,31 @@
 {
-    "name": "wedding-management-system",
-    "version": "1.0.0",
-    "private": true,
-    "workspaces": [
-        "apps/*",
-        "packages/*"
-    ],
-    "scripts": {
-        "dev": "turbo run dev --parallel",
-        "build": "turbo run build",
-        "lint": "turbo run lint",
-        "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
-        "frontend:dev": "npm run dev --workspace=apps/frontend",
-        "backend:dev": "npm run dev --workspace=apps/backend",
-        "backend:migrate": "npm run migrate --workspace=apps/backend",
-        "backend:seed": "npm run seed --workspace=apps/backend",
-        "clean": "turbo run clean && rm -rf node_modules"
-    },
-    "devDependencies": {
-        "@types/node": "^22.10.2",
-        "prettier": "^3.4.2",
-        "turbo": "^2.3.3",
-        "typescript": "^5.7.2"
-    },
-    "engines": {
-        "node": ">=18.0.0",
-        "npm": ">=9.0.0"
-    }
+  "name": "wedding-management-system",
+  "version": "1.0.0",
+  "packageManager": "npm@10.5.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "frontend:dev": "npm run dev --workspace=apps/frontend",
+    "backend:dev": "npm run dev --workspace=apps/backend",
+    "backend:migrate": "npm run migrate --workspace=apps/backend",
+    "backend:seed": "npm run seed --workspace=apps/backend",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "prettier": "^3.4.2",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
 }
