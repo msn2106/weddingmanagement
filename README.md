@@ -313,4 +313,4 @@ For issues or questions, please create a GitHub issue.
 - [CHANGELOG.md](./CHANGELOG.md)
 - [RELEASE.md](./RELEASE.md)
 - [CODEOWNERS](./.github/CODEOWNERS)
-- [Branching & Commit Conventions](./BRANCHING_AND_COMMITS.md)
+- [Branching & Commit Conventions](./BRANCHING_AND_COMMIT.md)
