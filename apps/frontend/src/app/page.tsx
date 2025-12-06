@@ -1,74 +1,25 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { dashboardAPI, guestAPI, eventAPI, budgetAPI, expenseAPI } from '@/lib/api';
-import {
-  Users,
-  Calendar,
-  DollarSign,
-  TrendingUp,
-  Plus,
-  Edit,
-  Trash2,
-  Check,
-  X,
-  Clock,
-} from 'lucide-react';
+import { useState } from 'react';
+import { Users, Calendar, DollarSign, TrendingUp, Check } from 'lucide-react';
 import { getStatusBadge } from '@/constants/getStatusBadge';
 import Budget from '@/components/Budget';
 import Event from '@/components/Event';
 import Guest from '@/components/Guest';
+import { useInitializeWedding, useDashboard, useGuests, useEvents } from '@/hooks/useWedding';
 
 type Tab = 'dashboard' | 'guests' | 'events' | 'budget';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
-  const [dashboardStats, setDashboardStats] = useState<any>(null);
-  const [guests, setGuests] = useState<any[]>([]);
-  const [events, setEvents] = useState<any[]>([]);
 
-  const [loading, setLoading] = useState(false);
+  // Initialize all data on mount
+  const { loading: initLoading } = useInitializeWedding();
 
-  // Fetch dashboard stats
-  const fetchDashboardStats = async () => {
-    try {
-      const { data } = await dashboardAPI.getStats();
-      setDashboardStats(data.data);
-    } catch (error) {
-      console.error('Error fetching dashboard stats:', error);
-    }
-  };
-
-  // Fetch guests
-  const fetchGuests = async () => {
-    try {
-      const { data } = await guestAPI.getAll();
-      setGuests(data.data);
-    } catch (error) {
-      console.error('Error fetching guests:', error);
-    }
-  };
-
-  // Fetch events
-  const fetchEvents = async () => {
-    try {
-      const { data } = await eventAPI.getAll();
-      setEvents(data.data);
-    } catch (error) {
-      console.error('Error fetching events:', error);
-    }
-  };
-
-  useEffect(() => {
-    function fetchDetails() {
-      setLoading(true);
-      fetchDashboardStats();
-      fetchGuests();
-      fetchEvents();
-      setLoading(false);
-    }
-    fetchDetails();
-  }, []);
+  // Get data from store via hooks
+  const { dashboardStats } = useDashboard();
+  const { guests } = useGuests();
+  const { events } = useEvents();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
@@ -97,11 +48,10 @@ export default function Home() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as Tab)}
-                  className={`flex items-center gap-2 px-6 py-4 border-b-2 transition-colors ${
-                    activeTab === tab.id
+                  className={`flex items-center gap-2 px-6 py-4 border-b-2 transition-colors ${activeTab === tab.id
                       ? 'border-purple-600 text-purple-600'
                       : 'border-transparent text-gray-600 hover:text-gray-900'
-                  }`}
+                    }`}
                 >
                   <Icon size={18} />
                   <span className="font-medium whitespace-nowrap">{tab.label}</span>
@@ -114,8 +64,14 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-8">
+        {initLoading && (
+          <div className="flex justify-center items-center py-12">
+            <div className="text-gray-600">Loading wedding data...</div>
+          </div>
+        )}
+
         {/* Dashboard Tab */}
-        {activeTab === 'dashboard' && (
+        {activeTab === 'dashboard' && !initLoading && (
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-gray-900">Dashboard Overview</h2>
 
@@ -140,12 +96,12 @@ export default function Home() {
                     <p className="text-3xl font-bold text-gray-900">
                       {dashboardStats?.guests?.totalGuests > 0
                         ? Math.round(
-                            ((dashboardStats.guests.rsvpCounts.find(
-                              (r: any) => r.status === 'attending',
-                            )?.count || 0) /
-                              dashboardStats.guests.totalGuests) *
-                              100,
-                          )
+                          ((dashboardStats.guests.rsvpCounts.find(
+                            (r) => r.status === 'attending'
+                          )?.count || 0) /
+                            dashboardStats.guests.totalGuests) *
+                          100
+                        )
                         : 0}
                       %
                     </p>
@@ -221,10 +177,10 @@ export default function Home() {
         )}
 
         {/* Guests Tab */}
-        {activeTab === 'guests' && <Guest guests={guests} />}
+        {activeTab === 'guests' && <Guest />}
 
         {/* Events Tab */}
-        {activeTab === 'events' && <Event events={events} />}
+        {activeTab === 'events' && <Event />}
 
         {/* Budget Tab */}
         {activeTab === 'budget' && <Budget />}

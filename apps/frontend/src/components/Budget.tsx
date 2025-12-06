@@ -1,29 +1,9 @@
-import { useState, useEffect } from 'react';
 import { Plus } from 'lucide-react';
-import { budgetAPI, expenseAPI } from '@/lib/api';
 import { getStatusBadge } from '@/constants/getStatusBadge';
+import { useBudgetWithExpenses } from '@/hooks/useWedding';
 
 const Budget = () => {
-  const [budgets, setBudgets] = useState<any[]>([]);
-  const [expenses, setExpenses] = useState<any[]>([]);
-
-  // Fetch budgets and expenses
-  const fetchBudgets = async () => {
-    try {
-      const [budgetsRes, expensesRes] = await Promise.all([
-        budgetAPI.getAll(),
-        expenseAPI.getAll(),
-      ]);
-      setBudgets(budgetsRes.data.data);
-      setExpenses(expensesRes.data.data);
-    } catch (error) {
-      console.error('Error fetching budget data:', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchBudgets();
-  }, []);
+  const { budgets, expenses, loading } = useBudgetWithExpenses();
 
   return (
     <div className="space-y-6">
@@ -36,7 +16,11 @@ const Budget = () => {
       </div>
 
       {/* Budget Overview */}
-      {budgets.length > 0 && (
+      {loading ? (
+        <div className="bg-white rounded-lg shadow p-6">
+          <div className="text-center text-gray-500">Loading budget...</div>
+        </div>
+      ) : budgets.length > 0 ? (
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="text-lg font-bold mb-4">Budget Overview</h3>
           <div className="space-y-4">
@@ -53,13 +37,12 @@ const Budget = () => {
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-3">
                     <div
-                      className={`h-3 rounded-full ${
-                        percentage > 90
+                      className={`h-3 rounded-full ${percentage > 90
                           ? 'bg-red-500'
                           : percentage > 70
                             ? 'bg-yellow-500'
                             : 'bg-green-500'
-                      }`}
+                        }`}
                       style={{ width: `${Math.min(percentage, 100)}%` }}
                     />
                   </div>
@@ -68,6 +51,10 @@ const Budget = () => {
               );
             })}
           </div>
+        </div>
+      ) : (
+        <div className="bg-white rounded-lg shadow p-6">
+          <div className="text-center text-gray-500">No budget found</div>
         </div>
       )}
 
@@ -94,7 +81,13 @@ const Budget = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {expenses.length === 0 ? (
+            {loading ? (
+              <tr>
+                <td colSpan={5} className="px-6 py-4 text-center text-gray-500">
+                  Loading expenses...
+                </td>
+              </tr>
+            ) : expenses.length === 0 ? (
               <tr>
                 <td colSpan={5} className="px-6 py-4 text-center text-gray-500">
                   No expenses found
