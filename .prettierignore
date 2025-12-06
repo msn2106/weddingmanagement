@@ -1,0 +1,29 @@
+# Node / build artifacts
+node_modules
+dist
+build
+.next
+.out
+coverage
+
+# Monorepo / turbo / cache / local artifacts
+.turbo
+.pnp.*
+.vscode
+.idea
+
+# Generated assets
+**/generated/**
+**/schema.prisma
+**/prisma/migrations/**
+
+# Lock files (you probably still want these in VCS — but don't format)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Large binaries, media
+public/**/*.png
+public/**/*.jpg
+public/**/*.webp
+public/**/*.mp4

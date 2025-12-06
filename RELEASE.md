@@ -23,7 +23,8 @@ git push origin vX.Y.Z
 
 ## Hotfixes
 
-For urgent fixes, create a hotfix </desc> branch from main, apply fix, run tests, and create a PR to main. After merge, bump version and release.
+For urgent fixes, create a hotfix </desc> branch from main, apply fix, run tests, and create a PR to
+main. After merge, bump version and release.
 
 ## Rollback
 

@@ -5,6 +5,7 @@ This guide will walk you through setting up the Wedding Management System from s
 ## 📋 Prerequisites
 
 Ensure you have the following installed:
+
 - **Node.js** v18.0.0 or higher ([Download](https://nodejs.org/))
 - **MySQL** v8.0 or higher ([Download](https://dev.mysql.com/downloads/))
 - **Git** ([Download](https://git-scm.com/downloads))
@@ -91,6 +92,7 @@ npm install
 #### Option A: Local MySQL
 
 1. **Start MySQL**
+
 ```bash
 # macOS
 brew services start mysql
@@ -103,11 +105,13 @@ sudo service mysql start
 ```
 
 2. **Create Database**
+
 ```bash
 mysql -u root -p
 ```
 
 Then in MySQL prompt:
+
 ```sql
 CREATE DATABASE wedding_management;
 CREATE USER 'wedding_user'@'localhost' IDENTIFIED BY 'your_secure_password';
@@ -138,6 +142,7 @@ cp .env.example .env
 ```
 
 Edit `.env`:
+
 ```env
 PORT=5000
 NODE_ENV=development
@@ -170,6 +175,7 @@ cp .env.local.example .env.local
 ```
 
 Edit `.env.local`:
+
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
@@ -182,6 +188,7 @@ npm run backend:migrate
 ```
 
 This will:
+
 - Connect to MySQL
 - Create all tables
 - Setup relationships
@@ -193,6 +200,7 @@ npm run backend:seed
 ```
 
 This will populate the database with:
+
 - 4 sample events
 - 3 sample guests
 - 1 budget with 3 expenses
@@ -205,6 +213,7 @@ npm run dev
 ```
 
 This will start:
+
 - **Frontend**: http://localhost:3000
 - **Backend**: http://localhost:5000
 
@@ -240,6 +249,7 @@ curl http://localhost:5000/api/dashboard/stats
 ### MySQL Connection Error
 
 **Error**: `Access denied for user`
+
 ```bash
 # Check MySQL is running
 mysql -u root -p
@@ -252,6 +262,7 @@ ALTER USER 'wedding_user'@'localhost' IDENTIFIED BY 'new_password';
 ```
 
 **Error**: `Unknown database 'wedding_management'`
+
 ```bash
 # Create database
 CREATE DATABASE wedding_management;
@@ -260,6 +271,7 @@ CREATE DATABASE wedding_management;
 ### Port Already in Use
 
 **Frontend (3000)**
+
 ```bash
 # Find and kill process
 lsof -ti:3000 | xargs kill -9
@@ -269,6 +281,7 @@ lsof -ti:3000 | xargs kill -9
 ```
 
 **Backend (5000)**
+
 ```bash
 # Find and kill process
 lsof -ti:5000 | xargs kill -9
@@ -315,6 +328,7 @@ npm run build
 ### Install Extensions
 
 Create `.vscode/extensions.json`:
+
 ```json
 {
   "recommendations": [
@@ -329,6 +343,7 @@ Create `.vscode/extensions.json`:
 ### Settings
 
 Create `.vscode/settings.json`:
+
 ```json
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -343,6 +358,7 @@ Create `.vscode/settings.json`:
 ## 🚀 Deploying to Vercel
 
 ### Prerequisites
+
 - GitHub account
 - Vercel account ([Sign up](https://vercel.com/signup))
 - PlanetScale account for MySQL ([Sign up](https://planetscale.com/))
@@ -377,6 +393,7 @@ vercel
 ```
 
 Add environment variables in Vercel Dashboard:
+
 - `DATABASE_URL` = PlanetScale connection string
 - `FRONTEND_URL` = (will get after deploying frontend)
 - `NODE_ENV` = production
@@ -393,6 +410,7 @@ vercel
 ```
 
 Add environment variable:
+
 - `NEXT_PUBLIC_API_URL` = your backend URL from Step 3
 
 ### Step 5: Update CORS
@@ -400,6 +418,7 @@ Add environment variable:
 Update backend `FRONTEND_URL` in Vercel with your frontend URL.
 
 Redeploy backend:
+
 ```bash
 cd apps/backend
 vercel --prod

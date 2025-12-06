@@ -22,8 +22,8 @@ Why is this feature needed? Who benefits?
 
 ## 📐 Proposed Solution
 
-A clear description of how this feature should work.
-If UI changes are required, attach wireframes or mockups.
+A clear description of how this feature should work. If UI changes are required, attach wireframes
+or mockups.
 
 ## 📌 Additional Notes
 

@@ -2,13 +2,16 @@
 
 ## 📖 Overview
 
-A comprehensive, full-stack wedding planning application built with modern web technologies. This system helps couples and wedding planners manage all aspects of wedding planning including guests, events, budget, vendors, and more.
+A comprehensive, full-stack wedding planning application built with modern web technologies. This
+system helps couples and wedding planners manage all aspects of wedding planning including guests,
+events, budget, vendors, and more.
 
 ## 🎯 Current Implementation Status
 
 ### ✅ Completed (MVP - Phase 1)
 
 #### Backend (Node.js + Express + TypeORM)
+
 - ✅ RESTful API with Express
 - ✅ TypeORM with MySQL database
 - ✅ Database entities (Guest, Event, Budget, Expense, User)
@@ -21,17 +24,19 @@ A comprehensive, full-stack wedding planning application built with modern web t
 - ✅ Vercel deployment configuration
 
 #### Frontend (Next.js 15 + React 19 + TypeScript)
+
 - ✅ Modern Next.js App Router
 - ✅ Responsive Tailwind CSS design
 - ✅ Dashboard with real-time statistics
 - ✅ Guest management interface
-- ✅ Event management interface  
+- ✅ Event management interface
 - ✅ Budget & expense tracking interface
 - ✅ API integration layer
 - ✅ Beautiful gradient UI design
 - ✅ Mobile-responsive layout
 
 #### Features Implemented
+
 1. **Dashboard**
    - Guest count statistics
    - RSVP rate calculation
@@ -68,6 +73,7 @@ A comprehensive, full-stack wedding planning application built with modern web t
    - Automatic budget calculation
 
 #### Database Schema
+
 ```
 users
 ├── id (UUID, PK)
@@ -120,8 +126,9 @@ guest_events (junction table)
 ```
 
 #### API Endpoints (22 endpoints)
+
 - 4 Dashboard endpoints
-- 7 Guest endpoints  
+- 7 Guest endpoints
 - 6 Event endpoints
 - 5 Budget endpoints
 - 4 Expense endpoints
@@ -129,6 +136,7 @@ guest_events (junction table)
 ## 📋 Pending Implementation (Future Phases)
 
 ### Phase 2-13 (See IMPLEMENTATION_PLAN.md)
+
 - Vendor Management
 - Travel Planner
 - Stay/Accommodation Management
@@ -147,6 +155,7 @@ guest_events (junction table)
 ## 🛠️ Technology Stack
 
 ### Frontend
+
 - **Framework**: Next.js 15 (App Router)
 - **UI Library**: React 19
 - **Language**: TypeScript 5.7
@@ -156,6 +165,7 @@ guest_events (junction table)
 - **Charts**: Recharts (ready to use)
 
 ### Backend
+
 - **Runtime**: Node.js 18+
 - **Framework**: Express 4.21
 - **Language**: TypeScript 5.7
@@ -164,12 +174,14 @@ guest_events (junction table)
 - **Validation**: class-validator
 
 ### Development Tools
+
 - **Monorepo**: Turborepo
 - **Package Manager**: npm workspaces
 - **Code Quality**: ESLint, Prettier
 - **Build Tool**: tsx (TypeScript execution)
 
 ### Deployment
+
 - **Platform**: Vercel (Frontend + Backend)
 - **Database**: PlanetScale (or Railway)
 - **CI/CD**: Automatic via Vercel + GitHub
@@ -256,6 +268,7 @@ wedding-management-system/
 ## 🚀 Getting Started
 
 ### Quick Start (3 commands)
+
 ```bash
 npm install                    # Install dependencies
 npm run backend:migrate        # Setup database
@@ -263,6 +276,7 @@ npm run dev                    # Start everything
 ```
 
 ### Detailed Setup
+
 1. Install Node.js 18+, MySQL 8.0
 2. Clone repository
 3. Install dependencies: `npm install`
@@ -277,18 +291,19 @@ npm run dev                    # Start everything
 
 ## 📚 Documentation Files
 
-| File | Purpose |
-|------|---------|
-| `README.md` | Project overview and quick start |
-| `SETUP_GUIDE.md` | Detailed local setup instructions |
-| `IMPLEMENTATION_PLAN.md` | Roadmap for remaining features |
-| `DEPLOYMENT_GUIDE.md` | Production deployment to Vercel |
-| `QUICK_REFERENCE.md` | Developer cheat sheet |
-| `PROJECT_SUMMARY.md` | This comprehensive overview |
+| File                     | Purpose                           |
+| ------------------------ | --------------------------------- |
+| `README.md`              | Project overview and quick start  |
+| `SETUP_GUIDE.md`         | Detailed local setup instructions |
+| `IMPLEMENTATION_PLAN.md` | Roadmap for remaining features    |
+| `DEPLOYMENT_GUIDE.md`    | Production deployment to Vercel   |
+| `QUICK_REFERENCE.md`     | Developer cheat sheet             |
+| `PROJECT_SUMMARY.md`     | This comprehensive overview       |
 
 ## 🎨 Design Principles
 
 ### Backend
+
 - **RESTful API** design
 - **Service layer** pattern for business logic
 - **Repository pattern** via TypeORM
@@ -297,6 +312,7 @@ npm run dev                    # Start everything
 - **Environment-based** configuration
 
 ### Frontend
+
 - **Component-based** architecture
 - **Server components** where possible (Next.js 15)
 - **Client components** for interactivity
@@ -305,6 +321,7 @@ npm run dev                    # Start everything
 - **Accessibility** considerations
 
 ### Database
+
 - **Normalized schema** (3NF)
 - **UUID primary keys** for security
 - **Enum types** for status fields
@@ -321,6 +338,7 @@ npm run dev                    # Start everything
 - ✅ Error handling without sensitive data exposure
 
 ### To Implement
+
 - ⏳ JWT authentication
 - ⏳ Password hashing (bcrypt)
 - ⏳ Rate limiting
@@ -330,12 +348,14 @@ npm run dev                    # Start everything
 ## 📊 Performance Considerations
 
 ### Current
+
 - Database connection pooling
 - Efficient queries with TypeORM
 - Server-side rendering (Next.js)
 - Automatic code splitting
 
 ### Future Optimizations
+
 - Redis caching
 - CDN for static assets
 - Database indexing
@@ -346,16 +366,19 @@ npm run dev                    # Start everything
 ## 🧪 Testing Strategy (Planned)
 
 ### Unit Tests
+
 - Service layer logic
 - Utility functions
 - Entity validations
 
 ### Integration Tests
+
 - API endpoints
 - Database operations
 - Service integrations
 
 ### E2E Tests
+
 - User workflows
 - CRUD operations
 - Multi-step processes
@@ -365,11 +388,13 @@ npm run dev                    # Start everything
 ## 📈 Scalability Path
 
 ### Current Architecture
+
 - Monolithic (suitable for MVP)
 - Single database
 - Vercel serverless functions
 
 ### Future Scaling
+
 1. **Database**: Read replicas, sharding
 2. **Backend**: Microservices, load balancing
 3. **Frontend**: Edge functions, ISR
@@ -379,6 +404,7 @@ npm run dev                    # Start everything
 ## 🎯 Business Value
 
 ### For Couples
+
 - Centralized wedding planning
 - Real-time budget tracking
 - Easy guest management
@@ -386,6 +412,7 @@ npm run dev                    # Start everything
 - Stress reduction
 
 ### For Wedding Planners
+
 - Multiple wedding management
 - Client collaboration
 - Vendor coordination
@@ -393,6 +420,7 @@ npm run dev                    # Start everything
 - Professional tools
 
 ### Market Potential
+
 - Wedding industry: $70B+ globally
 - Digital transformation trend
 - Subscription business model
@@ -412,6 +440,7 @@ npm run dev                    # Start everything
 ## 🌟 Code Quality
 
 ### Standards
+
 - ✅ TypeScript for type safety
 - ✅ ESLint for code quality
 - ✅ Prettier for formatting
@@ -420,6 +449,7 @@ npm run dev                    # Start everything
 - ✅ Error handling patterns
 
 ### Best Practices
+
 - DRY (Don't Repeat Yourself)
 - SOLID principles
 - Separation of concerns
@@ -459,6 +489,7 @@ MIT License (to be added)
 ## 🎓 Learning Resources
 
 ### Technologies Used
+
 - [Next.js Documentation](https://nextjs.org/docs)
 - [TypeORM Documentation](https://typeorm.io/)
 - [Express.js Guide](https://expressjs.com/)
@@ -466,6 +497,7 @@ MIT License (to be added)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 
 ### Architecture Patterns
+
 - REST API design
 - Service layer pattern
 - Repository pattern
@@ -475,6 +507,7 @@ MIT License (to be added)
 ## 📊 Project Metrics
 
 ### Current Codebase
+
 - **Backend**: ~2,000 lines
 - **Frontend**: ~800 lines
 - **Configuration**: ~400 lines
@@ -482,12 +515,14 @@ MIT License (to be added)
 - **Total**: ~8,200 lines
 
 ### API Coverage
+
 - 22 endpoints implemented
 - 4 main resources (guests, events, budgets, expenses)
 - Full CRUD operations
 - Statistics endpoints
 
 ### Database
+
 - 5 main tables
 - 1 junction table
 - 15+ enum types
@@ -496,6 +531,7 @@ MIT License (to be added)
 ## 🔮 Future Vision
 
 ### Short-term (3-6 months)
+
 - Complete Phase 2-4 features
 - Add authentication
 - Vendor management
@@ -503,6 +539,7 @@ MIT License (to be added)
 - Mobile app MVP
 
 ### Mid-term (6-12 months)
+
 - AI assistant
 - WhatsApp integration
 - Wedding website builder
@@ -510,6 +547,7 @@ MIT License (to be added)
 - Marketplace
 
 ### Long-term (1-2 years)
+
 - Multi-tenant SaaS
 - White-label solution
 - API for third-parties
@@ -519,18 +557,21 @@ MIT License (to be added)
 ## 🎯 Success Metrics (Future)
 
 ### User Engagement
+
 - Daily active users
 - Feature adoption rate
 - Session duration
 - Return rate
 
 ### Business
+
 - Customer acquisition cost
 - Lifetime value
 - Conversion rate
 - Revenue per user
 
 ### Technical
+
 - API response time
 - Error rate
 - Uptime percentage
@@ -546,6 +587,7 @@ MIT License (to be added)
 ## 📞 Support
 
 For questions or issues:
+
 1. Check documentation files
 2. Review troubleshooting guides
 3. Search existing issues
@@ -565,11 +607,12 @@ For questions or issues:
 📊 **Data-Driven** - Real-time statistics and insights  
 🔒 **Secure** - Best practices implemented  
 📈 **Scalable** - Architecture supports growth  
-💡 **Innovative** - AI and automation roadmap  
+💡 **Innovative** - AI and automation roadmap
 
 ---
 
-**This project represents a solid foundation for a comprehensive wedding management platform with clear growth potential and professional architecture.**
+**This project represents a solid foundation for a comprehensive wedding management platform with
+clear growth potential and professional architecture.**
 
 ---
 

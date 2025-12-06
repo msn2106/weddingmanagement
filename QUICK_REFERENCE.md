@@ -14,6 +14,7 @@ wedding-management-system/
 ## 🚀 Common Commands
 
 ### Development
+
 ```bash
 # Start everything
 npm run dev
@@ -31,6 +32,7 @@ npm run backend:dev
 ```
 
 ### Database
+
 ```bash
 # Run migrations (create tables)
 npm run backend:migrate
@@ -43,6 +45,7 @@ mysql -u wedding_user -p wedding_management
 ```
 
 ### Build & Deploy
+
 ```bash
 # Build all apps
 npm run build
@@ -53,6 +56,7 @@ cd apps/backend && vercel
 ```
 
 ### Maintenance
+
 ```bash
 # Install dependencies
 npm install
@@ -70,6 +74,7 @@ npm run lint
 ## 🗄️ Database Quick Commands
 
 ### MySQL Commands
+
 ```sql
 -- Show all databases
 SHOW DATABASES;
@@ -87,13 +92,13 @@ SELECT * FROM guests;
 SELECT * FROM events;
 
 -- View budget summary
-SELECT b.name, b.totalBudget, b.totalSpent, 
+SELECT b.name, b.totalBudget, b.totalSpent,
        (b.totalSpent/b.totalBudget)*100 as percentage_used
 FROM budgets b;
 
 -- Count guests by RSVP status
-SELECT rsvpStatus, COUNT(*) as count 
-FROM guests 
+SELECT rsvpStatus, COUNT(*) as count
+FROM guests
 GROUP BY rsvpStatus;
 
 -- Drop all tables (CAREFUL!)
@@ -108,17 +113,20 @@ DROP TABLE users;
 ## 🔌 API Endpoints Reference
 
 ### Base URL
+
 ```
 Local: http://localhost:5000/api
 Production: https://your-backend.vercel.app/api
 ```
 
 ### Dashboard
+
 ```bash
 GET /dashboard/stats
 ```
 
 ### Guests
+
 ```bash
 GET    /guests              # Get all guests
 GET    /guests/:id          # Get guest by ID
@@ -130,6 +138,7 @@ GET    /guests/stats        # Guest statistics
 ```
 
 ### Events
+
 ```bash
 GET    /events              # Get all events
 GET    /events/:id          # Get event by ID
@@ -140,6 +149,7 @@ GET    /events/stats        # Event statistics
 ```
 
 ### Budget
+
 ```bash
 GET    /budgets             # Get all budgets
 GET    /budgets/:id         # Get budget by ID
@@ -150,6 +160,7 @@ GET    /budgets/:id/stats   # Budget statistics
 ```
 
 ### Expenses
+
 ```bash
 GET    /expenses                   # Get all expenses
 POST   /budgets/:id/expenses       # Add expense
@@ -160,11 +171,13 @@ DELETE /expenses/:id               # Delete expense
 ## 🧪 Testing API with cURL
 
 ### Get Dashboard Stats
+
 ```bash
 curl http://localhost:5000/api/dashboard/stats
 ```
 
 ### Create Guest
+
 ```bash
 curl -X POST http://localhost:5000/api/guests \
   -H "Content-Type: application/json" \
@@ -179,6 +192,7 @@ curl -X POST http://localhost:5000/api/guests \
 ```
 
 ### Update RSVP
+
 ```bash
 curl -X PATCH http://localhost:5000/api/guests/GUEST_ID/rsvp \
   -H "Content-Type: application/json" \
@@ -186,6 +200,7 @@ curl -X PATCH http://localhost:5000/api/guests/GUEST_ID/rsvp \
 ```
 
 ### Create Event
+
 ```bash
 curl -X POST http://localhost:5000/api/events \
   -H "Content-Type: application/json" \
@@ -201,6 +216,7 @@ curl -X POST http://localhost:5000/api/events \
 ```
 
 ### Add Expense
+
 ```bash
 curl -X POST http://localhost:5000/api/budgets/BUDGET_ID/expenses \
   -H "Content-Type: application/json" \
@@ -217,6 +233,7 @@ curl -X POST http://localhost:5000/api/budgets/BUDGET_ID/expenses \
 ## 🐛 Debugging Tips
 
 ### Check if services are running
+
 ```bash
 # Backend
 curl http://localhost:5000/health
@@ -226,6 +243,7 @@ curl http://localhost:3000
 ```
 
 ### View logs
+
 ```bash
 # Backend logs (in terminal where you ran npm run backend:dev)
 # Frontend logs (in terminal + browser console)
@@ -234,6 +252,7 @@ curl http://localhost:3000
 ### Common Issues
 
 **Issue**: Database connection failed
+
 ```bash
 # Check MySQL is running
 mysql -u root -p
@@ -242,6 +261,7 @@ mysql -u root -p
 ```
 
 **Issue**: Port already in use
+
 ```bash
 # Kill process on port 3000
 lsof -ti:3000 | xargs kill -9
@@ -251,6 +271,7 @@ lsof -ti:5000 | xargs kill -9
 ```
 
 **Issue**: Module not found
+
 ```bash
 # Reinstall dependencies
 rm -rf node_modules
@@ -258,6 +279,7 @@ npm install
 ```
 
 **Issue**: TypeORM sync issues
+
 ```bash
 # Check database.ts has synchronize: true
 # Manually connect to MySQL and check tables
@@ -301,6 +323,7 @@ src/
 ## 🔧 Environment Variables
 
 ### Backend (.env)
+
 ```env
 PORT=5000
 NODE_ENV=development
@@ -314,6 +337,7 @@ JWT_SECRET=your-secret-key
 ```
 
 ### Frontend (.env.local)
+
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
@@ -321,6 +345,7 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ## 📦 Package Scripts
 
 ### Root (package.json)
+
 - `npm run dev` - Start all services
 - `npm run build` - Build all apps
 - `npm run lint` - Lint all code
@@ -328,6 +353,7 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 - `npm run clean` - Remove build files
 
 ### Backend
+
 - `npm run dev` - Start dev server
 - `npm run build` - Build TypeScript
 - `npm run start` - Start production
@@ -335,6 +361,7 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 - `npm run seed` - Seed database
 
 ### Frontend
+
 - `npm run dev` - Start dev server
 - `npm run build` - Build for production
 - `npm run start` - Start production
@@ -343,6 +370,7 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ## 🎯 Database Schema
 
 ### guests
+
 - id (UUID)
 - name, phone, email
 - category (enum)
@@ -354,6 +382,7 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 - createdAt, updatedAt
 
 ### events
+
 - id (UUID)
 - name, type (enum)
 - date, startTime, endTime
@@ -363,6 +392,7 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 - createdAt, updatedAt
 
 ### budgets
+
 - id (UUID)
 - name
 - totalBudget, totalSpent
@@ -370,6 +400,7 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 - createdAt, updatedAt
 
 ### expenses
+
 - id (UUID)
 - description
 - category (enum)
@@ -382,13 +413,16 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ## 🚨 Emergency Fixes
 
 ### Reset Database
+
 ```sql
 DROP DATABASE wedding_management;
 CREATE DATABASE wedding_management;
 ```
+
 Then: `npm run backend:migrate && npm run backend:seed`
 
 ### Reset Node Modules
+
 ```bash
 rm -rf node_modules package-lock.json
 rm -rf apps/*/node_modules apps/*/package-lock.json
@@ -396,6 +430,7 @@ npm install
 ```
 
 ### Reset Everything
+
 ```bash
 # Stop all services
 pkill -f node

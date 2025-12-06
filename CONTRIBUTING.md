@@ -1,6 +1,7 @@
 # Contributing to Wedding Management System
 
-Thanks for wanting to contribute! This document explains how to get started, the contribution workflow, and coding standards.
+Thanks for wanting to contribute! This document explains how to get started, the contribution
+workflow, and coding standards.
 
 ## Table of Contents
 
@@ -34,7 +35,8 @@ git checkout -b feat/<short-desc>-<issue#>
 
 ## How to contribute
 
-- Open an issue first for non-trivial features or bug reports, link to the relevant issue from your PR.
+- Open an issue first for non-trivial features or bug reports, link to the relevant issue from your
+  PR.
 - Keep PRs small and focused — aim for a single logical change per PR.
 - Add unit tests for new functionality where applicable.
 - Update README/docs when changing behavior or configuration.
@@ -78,4 +80,5 @@ CI runs lint, build and tests on PRs. Fix failures before merging.
 
 ## Reporting security issues
 
-If you discover a security vulnerability, do not file a public issue. Contact the maintainers privately via the repository SECURITY.md process.
+If you discover a security vulnerability, do not file a public issue. Contact the maintainers
+privately via the repository SECURITY.md process.

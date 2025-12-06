@@ -1,7 +1,9 @@
 # Implementation Plan for Remaining Features
 
 ## Overview
-This document outlines the implementation strategy for features not yet completed in the MVP. Features are prioritized based on the PRD requirements.
+
+This document outlines the implementation strategy for features not yet completed in the MVP.
+Features are prioritized based on the PRD requirements.
 
 ---
 
@@ -10,6 +12,7 @@ This document outlines the implementation strategy for features not yet complete
 ### Backend Implementation
 
 **New Entity: `Vendor.ts`**
+
 ```typescript
 @Entity('vendors')
 export class Vendor {
@@ -55,6 +58,7 @@ export class Vendor {
 ```
 
 **API Endpoints**
+
 - `GET /api/vendors`
 - `POST /api/vendors`
 - `PUT /api/vendors/:id`
@@ -63,6 +67,7 @@ export class Vendor {
 - `POST /api/vendors/:id/documents` - Upload documents
 
 **Service: `vendorService.ts`**
+
 - CRUD operations
 - Payment tracking
 - Document management
@@ -71,6 +76,7 @@ export class Vendor {
 ### Frontend Implementation
 
 **Page: `apps/frontend/src/app/vendors/page.tsx`**
+
 - Vendor list with filters by category
 - Vendor detail modal/page
 - Payment tracking visualizations
@@ -78,16 +84,17 @@ export class Vendor {
 - Rating and review system
 
 **Components**
+
 - `VendorCard.tsx` - Display vendor summary
 - `VendorForm.tsx` - Add/edit vendor
 - `PaymentTracker.tsx` - Visual payment progress
 - `DocumentUpload.tsx` - Handle file uploads
 
 ### Estimated Effort
+
 - Backend: 3-4 hours
 - Frontend: 4-5 hours
-- Testing: 1-2 hours
-**Total: 8-11 hours**
+- Testing: 1-2 hours **Total: 8-11 hours**
 
 ---
 
@@ -96,6 +103,7 @@ export class Vendor {
 ### Backend Implementation
 
 **New Entity: `Travel.ts`**
+
 ```typescript
 @Entity('travels')
 export class Travel {
@@ -132,6 +140,7 @@ export class Travel {
 ```
 
 **API Endpoints**
+
 - `GET /api/travels`
 - `POST /api/travels`
 - `PUT /api/travels/:id`
@@ -140,6 +149,7 @@ export class Travel {
 - `POST /api/travels/:id/pickup` - Assign pickup
 
 **Service: `travelService.ts`**
+
 - CRUD operations
 - Filter by date/guest
 - Pickup coordination
@@ -148,6 +158,7 @@ export class Travel {
 ### Frontend Implementation
 
 **Page: `apps/frontend/src/app/travel/page.tsx`**
+
 - Timeline view of arrivals/departures
 - Airport pickup scheduler
 - Bulk import from CSV
@@ -155,15 +166,16 @@ export class Travel {
 - Calendar integration
 
 **Components**
+
 - `TravelTimeline.tsx` - Visual timeline
 - `PickupScheduler.tsx` - Assign drivers
 - `TravelImport.tsx` - CSV import
 
 ### Estimated Effort
+
 - Backend: 3-4 hours
 - Frontend: 5-6 hours
-- Testing: 1-2 hours
-**Total: 9-12 hours**
+- Testing: 1-2 hours **Total: 9-12 hours**
 
 ---
 
@@ -172,6 +184,7 @@ export class Travel {
 ### Backend Implementation
 
 **New Entity: `Accommodation.ts`**
+
 ```typescript
 @Entity('accommodations')
 export class Accommodation {
@@ -209,6 +222,7 @@ export class Accommodation {
 ```
 
 **API Endpoints**
+
 - `GET /api/accommodations`
 - `POST /api/accommodations`
 - `PUT /api/accommodations/:id`
@@ -219,6 +233,7 @@ export class Accommodation {
 ### Frontend Implementation
 
 **Page: `apps/frontend/src/app/accommodation/page.tsx`**
+
 - Hotel list with availability
 - Room allocation matrix
 - Guest assignment interface
@@ -226,10 +241,10 @@ export class Accommodation {
 - Cost calculator
 
 ### Estimated Effort
+
 - Backend: 3-4 hours
 - Frontend: 4-5 hours
-- Testing: 1-2 hours
-**Total: 8-11 hours**
+- Testing: 1-2 hours **Total: 8-11 hours**
 
 ---
 
@@ -238,6 +253,7 @@ export class Accommodation {
 ### Backend Implementation
 
 **New Entity: `WebsiteContent.ts`**
+
 ```typescript
 @Entity('website_content')
 export class WebsiteContent {
@@ -271,6 +287,7 @@ export class WebsiteContent {
 ```
 
 **API Endpoints**
+
 - `GET /api/website/:slug`
 - `POST /api/website`
 - `PUT /api/website/:id`
@@ -280,6 +297,7 @@ export class WebsiteContent {
 ### Frontend Implementation
 
 **Public Website: `apps/frontend/src/app/w/[slug]/page.tsx`**
+
 - Beautiful landing page
 - Love story section
 - Event timeline
@@ -289,16 +307,17 @@ export class WebsiteContent {
 - Travel information
 
 **Admin Builder: `apps/frontend/src/app/website/page.tsx`**
+
 - WYSIWYG editor
 - Theme customizer
 - Content management
 - Analytics dashboard
 
 ### Estimated Effort
+
 - Backend: 4-5 hours
 - Frontend: 10-12 hours
-- Design: 3-4 hours
-**Total: 17-21 hours**
+- Design: 3-4 hours **Total: 17-21 hours**
 
 ---
 
@@ -307,18 +326,20 @@ export class WebsiteContent {
 ### Backend Implementation
 
 **Service: `aiService.ts`**
+
 ```typescript
 // OpenAI GPT-4 integration
 class AIService {
-  async suggestVendors(budget: number, category: string): Promise<Vendor[]>
-  async generateChecklist(eventType: string): Promise<Task[]>
-  async optimizeTimeline(events: Event[]): Promise<Timeline>
-  async analyzeGuests(guests: Guest[]): Promise<Insights>
-  async designInvitation(theme: string, details: object): Promise<string>
+  async suggestVendors(budget: number, category: string): Promise<Vendor[]>;
+  async generateChecklist(eventType: string): Promise<Task[]>;
+  async optimizeTimeline(events: Event[]): Promise<Timeline>;
+  async analyzeGuests(guests: Guest[]): Promise<Insights>;
+  async designInvitation(theme: string, details: object): Promise<string>;
 }
 ```
 
 **API Endpoints**
+
 - `POST /api/ai/suggest-vendors`
 - `POST /api/ai/generate-checklist`
 - `POST /api/ai/chat` - Chatbot
@@ -327,21 +348,23 @@ class AIService {
 ### Frontend Implementation
 
 **Component: `AIAssistant.tsx`**
+
 - Floating chat widget
 - Context-aware suggestions
 - Task recommendations
 - Budget optimization tips
 
 ### Dependencies
+
 - OpenAI API key
 - Prompt engineering
 - Context management
 
 ### Estimated Effort
+
 - Backend: 6-8 hours
 - Frontend: 4-5 hours
-- Prompt Engineering: 3-4 hours
-**Total: 13-17 hours**
+- Prompt Engineering: 3-4 hours **Total: 13-17 hours**
 
 ---
 
@@ -350,30 +373,33 @@ class AIService {
 ### Backend Implementation
 
 **Service: `whatsappService.ts`**
+
 ```typescript
 // Twilio WhatsApp API integration
 class WhatsAppService {
-  async sendInvitation(phone: string, message: string)
-  async sendRSVPReminder(guests: Guest[])
-  async sendEventReminder(event: Event)
-  async handleIncomingMessage(webhook: any)
+  async sendInvitation(phone: string, message: string);
+  async sendRSVPReminder(guests: Guest[]);
+  async sendEventReminder(event: Event);
+  async handleIncomingMessage(webhook: any);
 }
 ```
 
 **Webhook: `/api/webhooks/whatsapp`**
+
 - Handle incoming RSVP responses
 - Parse confirmation messages
 - Update guest status
 
 ### Dependencies
+
 - Twilio WhatsApp Business API
 - Message templates
 - Webhook handling
 
 ### Estimated Effort
+
 - Backend: 5-6 hours
-- Testing: 2-3 hours
-**Total: 7-9 hours**
+- Testing: 2-3 hours **Total: 7-9 hours**
 
 ---
 
@@ -382,6 +408,7 @@ class WhatsAppService {
 ### Backend Implementation
 
 **New Entity: `Task.ts`**
+
 ```typescript
 @Entity('tasks')
 export class Task {
@@ -415,6 +442,7 @@ export class Task {
 ```
 
 **API Endpoints**
+
 - `GET /api/tasks`
 - `POST /api/tasks`
 - `PUT /api/tasks/:id`
@@ -424,6 +452,7 @@ export class Task {
 ### Frontend Implementation
 
 **Page: `apps/frontend/src/app/tasks/page.tsx`**
+
 - Kanban board view
 - Calendar view
 - Task filters
@@ -431,9 +460,9 @@ export class Task {
 - Progress tracking
 
 ### Estimated Effort
+
 - Backend: 3-4 hours
-- Frontend: 5-6 hours
-**Total: 8-10 hours**
+- Frontend: 5-6 hours **Total: 8-10 hours**
 
 ---
 
@@ -442,6 +471,7 @@ export class Task {
 ### Backend Implementation
 
 **Service: `analyticsService.ts`**
+
 - Guest demographics breakdown
 - Budget utilization trends
 - RSVP conversion rates
@@ -449,6 +479,7 @@ export class Task {
 - Vendor performance metrics
 
 **API Endpoints**
+
 - `GET /api/analytics/overview`
 - `GET /api/analytics/guests`
 - `GET /api/analytics/budget-trends`
@@ -457,15 +488,16 @@ export class Task {
 ### Frontend Implementation
 
 **Page: `apps/frontend/src/app/analytics/page.tsx`**
+
 - Interactive dashboards
 - Charts with Recharts
 - Export functionality
 - Customizable reports
 
 ### Estimated Effort
+
 - Backend: 4-5 hours
-- Frontend: 6-7 hours
-**Total: 10-12 hours**
+- Frontend: 6-7 hours **Total: 10-12 hours**
 
 ---
 
@@ -474,11 +506,13 @@ export class Task {
 ### Backend Implementation
 
 **Cloud Storage Integration**
+
 - Google Drive API
 - Firebase Storage
 - Image optimization
 
 **New Entity: `Media.ts`**
+
 ```typescript
 @Entity('media')
 export class Media {
@@ -511,6 +545,7 @@ export class Media {
 ### Frontend Implementation
 
 **Page: `apps/frontend/src/app/gallery/page.tsx`**
+
 - Photo grid with lightbox
 - Upload interface
 - Album organization
@@ -518,9 +553,9 @@ export class Media {
 - Moderation tools
 
 ### Estimated Effort
+
 - Backend: 5-6 hours
-- Frontend: 7-8 hours
-**Total: 12-14 hours**
+- Frontend: 7-8 hours **Total: 12-14 hours**
 
 ---
 
@@ -529,25 +564,28 @@ export class Media {
 ### Backend Implementation
 
 **JWT Authentication**
+
 - bcrypt for password hashing
 - JWT token generation
 - Refresh token mechanism
 
 **Middleware: `authMiddleware.ts`**
+
 ```typescript
 export const authenticate = async (req, res, next) => {
   // Verify JWT token
   // Attach user to req.user
-}
+};
 
 export const authorize = (roles: UserRole[]) => {
   return (req, res, next) => {
     // Check if user has required role
-  }
-}
+  };
+};
 ```
 
 **API Endpoints**
+
 - `POST /api/auth/register`
 - `POST /api/auth/login`
 - `POST /api/auth/refresh`
@@ -557,14 +595,15 @@ export const authorize = (roles: UserRole[]) => {
 ### Frontend Implementation
 
 **Context: `AuthContext.tsx`**
+
 - Login/logout functionality
 - Protected routes
 - Role-based UI
 
 ### Estimated Effort
+
 - Backend: 4-5 hours
-- Frontend: 3-4 hours
-**Total: 7-9 hours**
+- Frontend: 3-4 hours **Total: 7-9 hours**
 
 ---
 
@@ -573,15 +612,18 @@ export const authorize = (roles: UserRole[]) => {
 ### Implementation Strategy
 
 **Shared Logic**
+
 - Extract API calls to shared package
 - Reuse TypeScript types
 
 **React Native Setup**
+
 ```bash
 npx create-expo-app apps/mobile
 ```
 
 **Key Screens**
+
 - Dashboard
 - Guest List
 - Event Timeline
@@ -590,10 +632,10 @@ npx create-expo-app apps/mobile
 - Push Notifications
 
 ### Estimated Effort
+
 - Setup: 2-3 hours
 - UI Development: 15-20 hours
-- Native Features: 5-7 hours
-**Total: 22-30 hours**
+- Native Features: 5-7 hours **Total: 22-30 hours**
 
 ---
 
@@ -602,11 +644,13 @@ npx create-expo-app apps/mobile
 ### Backend Implementation
 
 **Service: `cardDesignerService.ts`**
+
 - Template management
 - AI-powered design generation
 - PDF generation
 
 **API Endpoints**
+
 - `GET /api/cards/templates`
 - `POST /api/cards/generate`
 - `POST /api/cards/preview`
@@ -615,6 +659,7 @@ npx create-expo-app apps/mobile
 ### Frontend Implementation
 
 **Page: `apps/frontend/src/app/cards/page.tsx`**
+
 - Template selector
 - Drag-and-drop editor
 - Text customization
@@ -622,34 +667,35 @@ npx create-expo-app apps/mobile
 - Preview & download
 
 ### Dependencies
+
 - Canvas API / Fabric.js
 - PDF generation library
 - AI image generation (DALL-E)
 
 ### Estimated Effort
+
 - Backend: 5-6 hours
-- Frontend: 10-12 hours
-**Total: 15-18 hours**
+- Frontend: 10-12 hours **Total: 15-18 hours**
 
 ---
 
 ## 📈 Total Estimated Implementation Time
 
-| Phase | Feature | Hours |
-|-------|---------|-------|
-| 2 | Vendor Management | 8-11 |
-| 3 | Travel Planner | 9-12 |
-| 4 | Stay Management | 8-11 |
-| 5 | Wedding Website | 17-21 |
-| 6 | AI Assistant | 13-17 |
-| 7 | WhatsApp Integration | 7-9 |
-| 8 | Task Manager | 8-10 |
-| 9 | Analytics | 10-12 |
-| 10 | Photo Gallery | 12-14 |
-| 11 | Authentication | 7-9 |
-| 12 | Mobile App | 22-30 |
-| 13 | Card Designer | 15-18 |
-| **TOTAL** | | **136-174 hours** |
+| Phase     | Feature              | Hours             |
+| --------- | -------------------- | ----------------- |
+| 2         | Vendor Management    | 8-11              |
+| 3         | Travel Planner       | 9-12              |
+| 4         | Stay Management      | 8-11              |
+| 5         | Wedding Website      | 17-21             |
+| 6         | AI Assistant         | 13-17             |
+| 7         | WhatsApp Integration | 7-9               |
+| 8         | Task Manager         | 8-10              |
+| 9         | Analytics            | 10-12             |
+| 10        | Photo Gallery        | 12-14             |
+| 11        | Authentication       | 7-9               |
+| 12        | Mobile App           | 22-30             |
+| 13        | Card Designer        | 15-18             |
+| **TOTAL** |                      | **136-174 hours** |
 
 ---
 
@@ -672,6 +718,7 @@ npx create-expo-app apps/mobile
 ## 🔧 Technical Considerations
 
 ### Performance Optimization
+
 - Implement caching (Redis)
 - Database indexing
 - Image optimization
@@ -679,6 +726,7 @@ npx create-expo-app apps/mobile
 - Pagination
 
 ### Security
+
 - Input validation
 - SQL injection prevention (TypeORM handles this)
 - XSS protection
@@ -686,12 +734,14 @@ npx create-expo-app apps/mobile
 - HTTPS only
 
 ### Scalability
+
 - Horizontal scaling with load balancer
 - Database read replicas
 - CDN for static assets
 - Microservices architecture (future)
 
 ### Testing
+
 - Unit tests (Jest)
 - Integration tests
 - E2E tests (Playwright)
@@ -702,12 +752,14 @@ npx create-expo-app apps/mobile
 ## 📚 Additional Resources
 
 ### Documentation to Create
+
 - API documentation (Swagger/OpenAPI)
 - Component storybook
 - User guide
 - Developer onboarding
 
 ### Third-Party Services to Consider
+
 - **Email**: SendGrid, AWS SES
 - **SMS**: Twilio
 - **Storage**: AWS S3, Google Cloud Storage
@@ -734,4 +786,5 @@ npx create-expo-app apps/mobile
 
 ---
 
-This implementation plan provides a clear roadmap for completing all features outlined in the PRD. Each phase can be implemented independently, allowing for incremental development and testing.
+This implementation plan provides a clear roadmap for completing all features outlined in the PRD.
+Each phase can be implemented independently, allowing for incremental development and testing.
