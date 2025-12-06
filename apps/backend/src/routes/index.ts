@@ -1,5 +1,10 @@
 import { Router } from 'express';
-import { guestController, eventController, budgetController, dashboardController } from '../controllers';
+import {
+  guestController,
+  eventController,
+  budgetController,
+  dashboardController,
+} from '../controllers';
 
 const router = Router();
 

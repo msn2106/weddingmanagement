@@ -12,6 +12,7 @@ This guide will help you deploy both frontend and backend to Vercel with a produ
 ## 🗄️ Step 1: Setup Production Database (PlanetScale)
 
 ### Why PlanetScale?
+
 - Free tier available (5GB storage)
 - Serverless MySQL
 - Automatic backups
@@ -30,20 +31,22 @@ This guide will help you deploy both frontend and backend to Vercel with a produ
    - Click "Connect"
    - Select "Connect with: Prisma" (we'll modify for TypeORM)
    - Copy the `DATABASE_URL`
-   
+
    Example:
+
    ```
    mysql://xxxxxx:pscale_pw_xxxxx@aws.connect.psdb.cloud/wedding-management?ssl={"rejectUnauthorized":true}
    ```
 
 4. **Initialize Schema**
+
    ```bash
    # Set connection string temporarily
    export DATABASE_URL="your-planetscale-url"
-   
+
    # Run migrations
    npm run backend:migrate
-   
+
    # Seed data (optional)
    npm run backend:seed
    ```
@@ -128,6 +131,7 @@ PORT=5000
 ```
 
 **Generate JWT Secret:**
+
 ```bash
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
@@ -225,12 +229,14 @@ curl https://wedding-backend.vercel.app/api/guests
 ### Issue: Database Connection Failed
 
 **Check:**
+
 1. Connection string is correct in Vercel env vars
 2. PlanetScale database is active
 3. SSL settings in connection string
 4. No extra spaces in environment variables
 
 **Fix:**
+
 ```bash
 # Test connection locally first
 export DATABASE_URL="your-url"
@@ -240,11 +246,13 @@ npm run backend:migrate
 ### Issue: CORS Errors
 
 **Check:**
+
 1. `FRONTEND_URL` in backend matches actual frontend URL
 2. No trailing slashes in URLs
 3. Both deployed (not mixing local + deployed)
 
 **Fix:**
+
 ```bash
 # Update backend env var
 FRONTEND_URL=https://wedding-frontend.vercel.app
@@ -256,11 +264,13 @@ vercel --prod
 ### Issue: Build Failed
 
 **Common causes:**
+
 1. TypeScript errors
 2. Missing dependencies
 3. Environment variables not set
 
 **Fix:**
+
 ```bash
 # Test build locally
 npm run build
@@ -275,11 +285,13 @@ git push
 ### Issue: API Returns 404
 
 **Check:**
+
 1. Backend URL is correct in frontend env
 2. `/api` prefix is included
 3. Routes are defined correctly
 
 **Fix:**
+
 ```bash
 # Verify backend routes
 curl https://wedding-backend.vercel.app/api/guests
@@ -291,6 +303,7 @@ NEXT_PUBLIC_API_URL=https://wedding-backend.vercel.app/api
 ### Issue: Slow Performance
 
 **Solutions:**
+
 1. Choose PlanetScale region close to Vercel deployment
 2. Enable Vercel Analytics
 3. Add caching headers
@@ -389,18 +402,21 @@ git push
 ### Free Tier Limits
 
 **Vercel:**
+
 - Free for personal projects
 - 100GB bandwidth/month
 - Unlimited sites
 - Hobby plan: $0
 
 **PlanetScale:**
+
 - Free tier: 5GB storage
 - 1 billion row reads/month
 - 10 million row writes/month
 - Great for MVP
 
 **Upgrade When:**
+
 - PlanetScale: >5GB data or need scaling
 - Vercel: Commercial use or need teams
 
@@ -460,10 +476,12 @@ vercel --prod
 Your wedding management system is now live! 🚀
 
 **Share your URLs:**
+
 - Frontend: `https://your-frontend.vercel.app`
 - Backend: `https://your-backend.vercel.app`
 
 **Next Steps:**
+
 1. Share with users for testing
 2. Gather feedback
 3. Implement Phase 2 features (see IMPLEMENTATION_PLAN.md)

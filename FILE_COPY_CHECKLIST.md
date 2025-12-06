@@ -1,6 +1,7 @@
 # File Copy Checklist for VS Code
 
-Follow this checklist to copy all files correctly into VS Code. Check off each item as you complete it.
+Follow this checklist to copy all files correctly into VS Code. Check off each item as you complete
+it.
 
 ## 📋 Setup Instructions
 
@@ -41,6 +42,7 @@ Create folder: `.vscode/`
 Create folder: `apps/backend/`
 
 ### Backend Root
+
 - [ ] **apps/backend/package.json**
 - [ ] **apps/backend/tsconfig.json**
 - [ ] **apps/backend/vercel.json**
@@ -49,12 +51,14 @@ Create folder: `apps/backend/`
 **Action**: Copy `.env.example` to `.env` and update with your credentials
 
 ### Backend Config
+
 Create folder: `apps/backend/src/config/`
 
 - [ ] **apps/backend/src/config/environment.ts**
 - [ ] **apps/backend/src/config/database.ts**
 
 ### Backend Entities
+
 Create folder: `apps/backend/src/entities/`
 
 - [ ] **apps/backend/src/entities/User.ts**
@@ -64,6 +68,7 @@ Create folder: `apps/backend/src/entities/`
 - [ ] **apps/backend/src/entities/Expense.ts**
 
 ### Backend Services
+
 Create folder: `apps/backend/src/services/`
 
 - [ ] **apps/backend/src/services/guestService.ts**
@@ -71,22 +76,26 @@ Create folder: `apps/backend/src/services/`
 - [ ] **apps/backend/src/services/budgetService.ts**
 
 ### Backend Controllers
+
 Create folder: `apps/backend/src/controllers/`
 
 - [ ] **apps/backend/src/controllers/index.ts**
 
 ### Backend Routes
+
 Create folder: `apps/backend/src/routes/`
 
 - [ ] **apps/backend/src/routes/index.ts**
 
 ### Backend Scripts
+
 Create folder: `apps/backend/src/scripts/`
 
 - [ ] **apps/backend/src/scripts/migrate.ts**
 - [ ] **apps/backend/src/scripts/seed.ts**
 
 ### Backend Core
+
 - [ ] **apps/backend/src/app.ts**
 - [ ] **apps/backend/src/server.ts**
 
@@ -97,6 +106,7 @@ Create folder: `apps/backend/src/scripts/`
 Create folder: `apps/frontend/`
 
 ### Frontend Root
+
 - [ ] **apps/frontend/package.json**
 - [ ] **apps/frontend/tsconfig.json**
 - [ ] **apps/frontend/next.config.js**
@@ -107,6 +117,7 @@ Create folder: `apps/frontend/`
 **Action**: Copy `.env.local.example` to `.env.local` and update API URL
 
 ### Frontend App
+
 Create folder: `apps/frontend/src/app/`
 
 - [ ] **apps/frontend/src/app/layout.tsx**
@@ -114,6 +125,7 @@ Create folder: `apps/frontend/src/app/`
 - [ ] **apps/frontend/src/app/globals.css**
 
 ### Frontend Lib
+
 Create folder: `apps/frontend/src/lib/`
 
 - [ ] **apps/frontend/src/lib/api.ts**
@@ -134,12 +146,14 @@ Create folder: `packages/shared/`
 After copying all files:
 
 ### 1. Check File Structure
+
 ```bash
 # In VS Code terminal
 tree -L 3 -I 'node_modules'
 ```
 
 Expected structure:
+
 ```
 wedding-management-system/
 ├── apps/
@@ -155,6 +169,7 @@ wedding-management-system/
 ```
 
 ### 2. Verify Package Files
+
 ```bash
 # Check if package.json files exist
 ls -la package.json
@@ -163,6 +178,7 @@ ls -la apps/frontend/package.json
 ```
 
 ### 3. Check Environment Files
+
 ```bash
 # Check .env files are created
 ls -la apps/backend/.env
@@ -170,6 +186,7 @@ ls -la apps/frontend/.env.local
 ```
 
 ### 4. Validate JSON Files
+
 ```bash
 # Validate JSON syntax (in VS Code)
 # Open each .json file and check for errors highlighted
@@ -180,6 +197,7 @@ ls -la apps/frontend/.env.local
 ## 🚀 Post-Copy Actions
 
 ### 1. Install Dependencies
+
 ```bash
 npm install
 ```
@@ -187,7 +205,9 @@ npm install
 **Expected output**: Installation of all dependencies for root, backend, and frontend
 
 ### 2. Configure Backend Environment
+
 Edit `apps/backend/.env`:
+
 ```env
 PORT=5000
 NODE_ENV=development
@@ -201,12 +221,15 @@ JWT_SECRET=generate-random-secret
 ```
 
 ### 3. Configure Frontend Environment
+
 Edit `apps/frontend/.env.local`:
+
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
 
 ### 4. Setup Database
+
 ```bash
 # Create MySQL database
 mysql -u root -p
@@ -218,11 +241,13 @@ npm run backend:migrate
 ```
 
 ### 5. Seed Sample Data
+
 ```bash
 npm run backend:seed
 ```
 
 ### 6. Start Development
+
 ```bash
 npm run dev
 ```
@@ -250,18 +275,23 @@ npm run dev
 ## 🐛 Troubleshooting
 
 ### Issue: File not found
+
 **Solution**: Check folder structure matches exactly
 
 ### Issue: JSON syntax error
+
 **Solution**: Verify no extra/missing commas, brackets
 
 ### Issue: Module not found
+
 **Solution**: Run `npm install` again
 
 ### Issue: TypeScript errors
+
 **Solution**: Check all imports are correct, file names match
 
 ### Issue: Cannot find package.json
+
 **Solution**: Ensure you're in the root directory
 
 ---
@@ -360,7 +390,7 @@ When all files are correctly copied and configured:
 ✅ Database migrations complete  
 ✅ Servers start successfully  
 ✅ Dashboard displays correctly  
-✅ Sample data appears  
+✅ Sample data appears
 
 ---
 
