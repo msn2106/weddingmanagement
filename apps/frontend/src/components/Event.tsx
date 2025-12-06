@@ -1,6 +1,9 @@
 import { Calendar, Clock, Plus, Users } from 'lucide-react';
+import { useEvents } from '@/hooks/useWedding';
 
-const Event = ({ events }) => {
+const Event = () => {
+  const { events, loading } = useEvents();
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -12,10 +15,12 @@ const Event = ({ events }) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {events.length === 0 ? (
+        {loading ? (
+          <div className="col-span-2 text-center py-12 text-gray-500">Loading events...</div>
+        ) : events.length === 0 ? (
           <div className="col-span-2 text-center py-12 text-gray-500">No events found</div>
         ) : (
-          events.map((event: any) => (
+          events.map((event) => (
             <div key={event.id} className="bg-white rounded-lg shadow p-6">
               <div className="flex items-start justify-between mb-4">
                 <div>

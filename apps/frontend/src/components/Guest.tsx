@@ -1,8 +1,10 @@
 import { getStatusBadge } from '@/constants/getStatusBadge';
 import { Plus } from 'lucide-react';
-import React from 'react';
+import { useGuests } from '@/hooks/useWedding';
 
-const Guest = ({ guests }) => {
+const Guest = () => {
+  const { guests, loading } = useGuests();
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -35,14 +37,20 @@ const Guest = ({ guests }) => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {guests.length === 0 ? (
+            {loading ? (
+              <tr>
+                <td colSpan={5} className="px-6 py-4 text-center text-gray-500">
+                  Loading guests...
+                </td>
+              </tr>
+            ) : guests.length === 0 ? (
               <tr>
                 <td colSpan={5} className="px-6 py-4 text-center text-gray-500">
                   No guests found
                 </td>
               </tr>
             ) : (
-              guests.map((guest: any) => (
+              guests.map((guest) => (
                 <tr key={guest.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4">
                     <p className="font-medium text-gray-900">{guest.name}</p>
